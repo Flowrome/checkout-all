@@ -8,7 +8,7 @@ const checkoutSync = (arr) => {
   if (arr.length > 0) {
     const currentBranch = arr[0]
     const spinner = ora(`Switching to branch ${currentBranch}`).start()
-    shell.exec(`git checkout ${currentBranch}`, () => {
+    shell.exec(`git checkout ${currentBranch} && git pull`, () => {
       spinner.stop()
       arr.shift()
       checkoutSync(arr)
